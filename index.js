@@ -21,6 +21,10 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 
 server.use(cors());
+server.get('/cors', (req, res) => {
+res.set('Access-Control-Allow-Origin', '*');
+res.send({ "msg": "This has CORS enabled 🎈" })
+})
 server.use(bodyParser.json());
 
 server.post("/test", async (req, res) => {
